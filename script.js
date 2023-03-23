@@ -1,19 +1,14 @@
 function getComputerChoice() {
   let choiceIndex = Math.floor(Math.random() * 3);
-  let output;
 
   switch (choiceIndex) {
     case 0:
-      output = "Rock";
-      break;
+      return "Rock";
     case 1:
-      output = "Paper";
-      break;
+      return "Paper";
     default:
-      output = "Scissors";
+      return "Scissors";
   }
-
-  return output;
 }
 
 function playRound(playerChoice, computerChoice) {
@@ -49,11 +44,11 @@ function game() {
     const computerChoice = getComputerChoice();
     const result =
       playRound(playerChoice, computerChoice) +
-      " Player chose: " +
+      "\nPlayer chose: " +
       playerChoice +
-      " | Computer chose: " +
+      "\nComputer chose: " +
       computerChoice;
-    console.log(result);
+    alert(result)
   }
 }
 
