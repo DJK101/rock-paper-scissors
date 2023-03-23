@@ -2,8 +2,6 @@ function getComputerChoice() {
   let choiceIndex = Math.floor(Math.random() * 3);
   let output;
 
-  console.log(choiceIndex);
-
   switch (choiceIndex) {
     case 0:
       output = "Rock";
@@ -18,7 +16,7 @@ function getComputerChoice() {
   return output;
 }
 
-function play(playerChoice, computerChoice) {
+function playRound(playerChoice, computerChoice) {
   if (playerChoice === computerChoice) {
     return "Draw!";
   } else {
@@ -27,13 +25,13 @@ function play(playerChoice, computerChoice) {
         if (computerChoice === "Scissors") {
           return "Player Wins!";
         } else {
-          return "Computer Wins";
+          return "Computer Wins!";
         }
       case "Paper":
         if (computerChoice === "Rock") {
           return "Player Wins!";
         } else {
-          return "Computer Wins";
+          return "Computer Wins!";
         }
       case "Scissors":
         if (computerChoice === "Paper") {
@@ -45,5 +43,18 @@ function play(playerChoice, computerChoice) {
   }
 }
 
-const result = play("Paper", "Scissors");
-console.log(result);
+function game() {
+  for (let i = 0; i < 5; i++) {
+    const playerChoice = prompt("Please choose Rock Paper or Scissors: ");
+    const computerChoice = getComputerChoice();
+    const result =
+      playRound(playerChoice, computerChoice) +
+      " Player chose: " +
+      playerChoice +
+      " | Computer chose: " +
+      computerChoice;
+    console.log(result);
+  }
+}
+
+game();
