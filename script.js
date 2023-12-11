@@ -1,55 +1,79 @@
+let scores = { player: 0, computer: 0 };
+let winner = "";
+
 function getComputerChoice() {
   let choiceIndex = Math.floor(Math.random() * 3);
 
   switch (choiceIndex) {
     case 0:
-      return "Rock";
+      return "rock";
     case 1:
-      return "Paper";
+      return "paper";
     default:
-      return "Scissors";
+      return "scissors";
   }
 }
 
-function playRound(playerChoice, computerChoice) {
+function getResult(playerChoice, computerChoice) {
   if (playerChoice === computerChoice) {
     return "Draw!";
   } else {
     switch (playerChoice) {
-      case "Rock":
-        if (computerChoice === "Scissors") {
+      case "rock":
+        if (computerChoice === "scissors") {
+          scores["player"] += 1;
           return "Player Wins!";
         } else {
+          scores["computer"] += 1;
           return "Computer Wins!";
         }
-      case "Paper":
-        if (computerChoice === "Rock") {
+      case "paper":
+        if (computerChoice === "rock") {
+          scores["player"] += 1;
           return "Player Wins!";
         } else {
+          scores["computer"] += 1;
           return "Computer Wins!";
         }
-      case "Scissors":
-        if (computerChoice === "Paper") {
+      case "scissors":
+        if (computerChoice === "paper") {
+          scores["player"] += 1;
           return "Player Wins!";
         } else {
+          scores["computer"] += 1;
           return "Computer Wins!";
         }
     }
   }
 }
 
-function game() {
-  for (let i = 0; i < 5; i++) {
-    const playerChoice = prompt("Please choose Rock Paper or Scissors: ");
-    const computerChoice = getComputerChoice();
-    const result =
-      playRound(playerChoice, computerChoice) +
-      "\nPlayer chose: " +
-      playerChoice +
-      "\nComputer chose: " +
-      computerChoice;
-    alert(result)
+function playRound(playerChoice) {
+  if (!winner) {
+  document.getElementById("results").textContent = `${getResult(
+    playerChoice,
+    getComputerChoice()
+  )} Player: ${scores["player"]} | Computer: ${scores["computer"]}`;
+  }
+  if (scores["player"] > 4) {
+    winner = "Player Won The Game";
+  } else if (scores["computer"] > 4) {
+    winner = "Computer Won The Game";
+    if (winner) {
+      document.getElementById("results").textContent = winner;
+    }
   }
 }
 
-game();
+function setup() {
+  document
+    .getElementById("rock")
+    .addEventListener("click", () => playRound("rock"));
+  document
+    .getElementById("paper")
+    .addEventListener("click", () => playRound("paper"));
+  document
+    .getElementById("scissors")
+    .addEventListener("click", () => playRound("scissors"));
+}
+
+setup();
