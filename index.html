@@ -5,12 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
     <title>Rock Paper Scissors</title>
   </head>
-  <body style="background-color: #3e3d3d;">
-    <div id="results"></div>
-    <button id="rock">Rock</button>
-    <button id="paper">Paper</button>
-    <button id="scissors">Scissors</button>
+  <body class="flex">
+    <div class="column">
+      <h1 id="results">Please choose an option</h1>
+      <div class="centered options">
+        <image src="./images/rock.png" id="rock" />
+        <image src="./images/paper.png" id="paper" />
+        <image src="./images/scissors.png" id="scissors" />
+      </div>
+    </div>
   </body>
 </html>

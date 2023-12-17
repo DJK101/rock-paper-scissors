@@ -55,12 +55,12 @@ function playRound(playerChoice) {
   )} Player: ${scores["player"]} | Computer: ${scores["computer"]}`;
   }
   if (scores["player"] > 4) {
-    winner = "Player Won The Game";
+    winner = "Player Won The Game!";
   } else if (scores["computer"] > 4) {
-    winner = "Computer Won The Game";
-    if (winner) {
-      document.getElementById("results").textContent = winner;
-    }
+    winner = "Computer Won The Game!";
+  }
+  if (winner) {
+    document.getElementById("results").textContent = winner;
   }
 }
 
